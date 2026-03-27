@@ -5,167 +5,213 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SmartMarket - Simulador Financeiro</title>
-
-    <link rel="stylesheet" href="simulador_com_tamanho.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <!-- Part d cima -->
-    <div class="container-title">
-        <div class="title-logo">
-            <h1>Flow <span class="color-logo">Track</span></h1>
+        <!-- Part d cima -->
+        <div class="container-title">
+            <div class="title-logo">
+                <h1>Flow <span class="color-logo">Track</span></h1>
+            </div>
+            <div class="title-text">
+                <h1>Simulador Financeiro - SmartMarket</h1>
+            </div>
         </div>
-        <div class="title-text">
-            <h1>Simulador Financeiro - SmartMarket</h1>
+
+
+        <div class="content">
+            <!-- input no meio -->
+            <div class="content-simulador">
+                <div class="content-title-info">
+                    <i class="fa-solid fa-circle-info"></i>
+                </div>
+                <div class="content-title">
+                    <div class="content-title-text">
+                        <h1>Simulação</h1>
+                    </div>
+                </div>
+
+                <div class="content-ipt">
+
+                    <div class="ipt-row">
+                        <label><b>Tamanho do Supermercado:</b></label>
+                        <select id="ipt_tamanho">
+                            <option value="default">Selecione:</option>
+                            <option value="1">Mercado (até 300m²)</option>
+                            <option value="2">Supermercado (300m² - 5000m²)</option>
+                            <option value="3">Hipermercado (+5000m²)</option>
+                        </select>
+                    </div>
+                    <!-- 500 a 1.500 clientes diariamente. -->
+                    <div class="ipt-row">
+                        <label><b>Clientes por Dia:</b></label>
+                        <input type="number" id="ipt_clientes" placeholder="Exp: 20">
+                    </div>
+
+                    <div class="ipt-row">
+                        <label><b>Gasto médio por cliente (R$):</b></label>
+                        <input type="number" id="ipt_ticket" placeholder="Exp: 150.00">
+                    </div>
+
+                    <div class="ipt-row">
+                        <label><b>Dias por mês:</b></label>
+                        <input type="number" id="ipt_dias" placeholder="Exp: 28">
+                    </div>
+
+                    <div class="ipt-row">
+                        <label><b>Conversão (%):</b></label>
+                        <input type="number" id="ipt_taxa" value="70">
+                    </div>
+
+                    <div class="ipt-row-button">
+                        <button onclick="calcular()">Calcular</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- SEM SISTEMA -->
+            <div class="content-resultado">
+                <div class="content-left">
+
+                    <div class="content-title-r">
+                        <h1>Sem sistema</h1>
+                    </div>
+
+                    <div class="ipt-row-resultado" id="resultadoSem">
+                    </div>
+
+                </div>
+
+                <!--COM SISTEMA -->
+                <div class="content-right">
+
+                    <div class="content-title-r">
+                        <h1>Com sistema</h1>
+                    </div>
+
+                    <div class="ipt-row-resultado" id="resultadoCom">
+                    </div>
+
+                </div>
+            </div>
         </div>
+
     </div>
 
-    
-    <div class="content">
+    <script>
+        /*placeholders baseados em médias:*/
 
-        <!-- SEM SISTEMA -->
-        <div class="content-left">
+        /*criação de váriavies que conectam o JS com o HTML*/
+        const tamanho = document.getElementById("ipt_tamanho");
+        const clientes = document.getElementById("ipt_clientes");
+        const ticket = document.getElementById("ipt_ticket");
+        const dias = document.getElementById("ipt_dias");
 
-            <div class="content-title">
-                <h1>Sem sistema</h1>
-            </div>
+        /*função de flexa(arrow), que verifica se o select de default está clicado, se não 
+        tem sugestão de valores baseados em cada tipo de select do 1 ao 3*/
+        tamanho.addEventListener("change", () => {
+            const valor = tamanho.value;
 
-            <div class="ipt-row-resultado" id="resultadoSem">
-                <p>Resultado aparecerá aqui</p>
-            </div>
+            if (valor === "default") {
+                clientes.placeholder = "Exp: 20";
+                ticket.placeholder = "Exp: 150.00";
+                dias.placeholder = "Exp: 28";
+                return;
+            }
 
-        </div>
+            const sugestoes = {
+                1: {
+                    clientes: "Média: 100 a 300",
+                    ticket: "Média: 20 a 50",
+                    dias: "Média: 26 a 30"
+                },
+                2: {
+                    clientes: "Média: 500 a 1500",
+                    ticket: "Média: 40 a 100",
+                    dias: "Média: 28 a 30"
+                },
+                3: {
+                    clientes: "Média: 2000+",
+                    ticket: "Média: 80 a 200",
+                    dias: "Média: 30"
+                }
+            };
 
-        <!-- input no meio -->
-        <div class="content-center">
+            /*alocação dos valores*/
+            clientes.placeholder = sugestoes[valor].clientes;
+            ticket.placeholder = sugestoes[valor].ticket;
+            dias.placeholder = sugestoes[valor].dias;
+        });
 
-            <div class="content-title">
-                <h1>Simulação</h1>
-            </div>
+        function calcular() {
 
-            <div class="content-ipt">
+            let clientes = Number(ipt_clientes.value);
+            let ticket = Number(ipt_ticket.value);
+            let dias = Number(ipt_dias.value);
+            let conversaoAtual = Number(ipt_taxa.value);
 
-                <div class="ipt-row">
-    <label><b>Tamanho do Supermercado:</b></label>
-   <select id="ipt_tamanho">
-    <option value="1">Mercado (até 300m²)</option>
-    <option value="2">Supermercado (300m² - 5000m²)</option>
-    <option value="3">Hipermercado (+5000m²)</option>
-</select>
-</div>
-                <!-- 500 a 1.500 clientes diariamente. -->
-                <div class="ipt-row">
-                    <label><b>Clientes por Dia:</b></label>
-                    <input type="number" id="ipt_clientes">
-                </div>
 
-                <div class="ipt-row">
-                    <label><b>Gasto médio por cliente (R$):</b></label>
-                    <input type="number" id="ipt_ticket">
-                </div>
 
-                <div class="ipt-row">
-                    <label><b>Dias por mês:</b></label>
-                    <input type="number" id="ipt_dias">
-                </div>
+            let tamanho = Number(ipt_tamanho.value);
 
-                <div class="ipt-row">
-                    <label><b>Conversão (%):</b></label>
-                    <input type="number" id="ipt_taxa" value="70">
-                </div>
+            let sensores;
+            let arduinos;
+            let jumpers;
 
-                <div class="ipt-row-button">
-                    <button onclick="calcular()">Calcular</button>
-                </div>
+            // DEFINIÇÃO REAL POR PORTE
+            if (tamanho == 1) {
+                //  Mercado pequeno
+                sensores = 3;
+                arduinos = 1;
+                jumpers = 15;
 
-            </div>
+            } else if (tamanho == 2) {
+                //  Supermercado médio
+                sensores = 8;
+                arduinos = 2;
+                jumpers = 40;
 
-        </div>
+            } else {
+                //  Hipermercado grande
+                sensores = 25;
+                arduinos = 5;
+                jumpers = 120;
+            }
 
-        <!--COM SISTEMA -->
-        <div class="content-right">
+            let comissao = 10;
 
-            <div class="content-title">
-                <h1>Com sistema</h1>
-            </div>
+            let custoSistema = (sensores * 50 + arduinos * 150 + jumpers * 2) * comissao;
 
-            <div class="ipt-row-resultado" id="resultadoCom">
-                <p>Resultado aparecerá aqui</p>
-            </div>
 
-        </div>
+            // MELHORIA
+            let novaConversao = conversaoAtual + ((100 - conversaoAtual) * 0.25);
+            if (novaConversao > 100) novaConversao = 100;
 
-    </div>
+            // RECEITAS
+            let receitaMax = clientes * ticket * dias;
+            let receitaAtual = receitaMax * (conversaoAtual / 100);
+            let receitaNova = receitaMax * (novaConversao / 100);
 
-</div>
+            // PERDAS E GANHOS
+            let perdaMes = receitaMax - receitaAtual;
+            let perdaAno = perdaMes * 12;
 
-<script>
-function calcular() {
+            let ganho = receitaNova - receitaAtual;
+            let ganhoAno = ganho * 12;
 
-    let clientes = Number(ipt_clientes.value);
-    let ticket = Number(ipt_ticket.value);
-    let dias = Number(ipt_dias.value);
-    let conversaoAtual = Number(ipt_taxa.value);
+            let payback = ganho > 0 ? custoSistema / ganho : 0;
 
-   
-
-let tamanho = Number(ipt_tamanho.value);
-
-let sensores;
-let arduinos;
-let jumpers;
-
-// DEFINIÇÃO REAL POR PORTE
-if (tamanho == 1) {
-    //  Mercado pequeno
-    sensores = 3;
-    arduinos = 1;
-    jumpers = 15;
-
-} else if (tamanho == 2) {
-    //  Supermercado médio
-    sensores = 8;
-    arduinos = 2;
-    jumpers = 40;
-
-} else {
-    //  Hipermercado grande
-    sensores = 25;
-    arduinos = 5;
-    jumpers = 120;
-}
-
-let comissao = 10;
-
-let custoSistema = (sensores * 50 + arduinos * 150 + jumpers * 2) * comissao;
-   
-
-    // MELHORIA
-    let novaConversao = conversaoAtual + ((100 - conversaoAtual) * 0.25);
-    if (novaConversao > 100) novaConversao = 100;
-
-    // RECEITAS
-    let receitaMax = clientes * ticket * dias;
-    let receitaAtual = receitaMax * (conversaoAtual / 100);
-    let receitaNova = receitaMax * (novaConversao / 100);
-
-    // PERDAS E GANHOS
-    let perdaMes = receitaMax - receitaAtual;
-    let perdaAno = perdaMes * 12;
-
-    let ganho = receitaNova - receitaAtual;
-    let ganhoAno = ganho * 12;
-
-    let payback = ganho > 0 ? custoSistema / ganho : 0;
-
-    // SEM SISTEMA
-    resultadoSem.innerHTML = `
-        <div class="res-title">
-            <h1>Sem Sistema</h1> <br> <br> <br>
-        </div>
+            // SEM SISTEMA
+            resultadoSem.innerHTML = `
 
         <div class="res-content">
             <div class="res-left">
@@ -184,7 +230,7 @@ let custoSistema = (sensores * 50 + arduinos * 150 + jumpers * 2) * comissao;
                     Mensal:<br>
                     
                      <span style="color:red;">
-                        <b>R$${perdaMes.toFixed(2)}</b><br><br>
+                        <b>R$${perdaMes.toFixed(2)}</b><br>
                     </span><br>
 
                     Anual:<br>
@@ -200,11 +246,8 @@ let custoSistema = (sensores * 50 + arduinos * 150 + jumpers * 2) * comissao;
         </div>
     `;
 
-    // COM SISTEMA
-    resultadoCom.innerHTML = `
-        <div class="res-title">
-            <h1>Com Sistema</h1> <br> <br> <br>
-        </div>
+            // COM SISTEMA
+            resultadoCom.innerHTML = `
 
         <div class="res-content">
             <div class="res-left">
@@ -237,7 +280,17 @@ let custoSistema = (sensores * 50 + arduinos * 150 + jumpers * 2) * comissao;
             </div>
         </div>
     `;
-}
-</script>
+
+            /*if de confirmação de preenchimento dos campos:*/
+
+            if ((clientes == '0') || (dias == '0') || (ticket == '0') || (tamanho == 'Default')) {
+                alert('Preecnha todos os campos corretamente!');
+                resultadoSem.innerHTML = ``;
+                resultadoCom.innerHTML = ``;
+            }
+
+        }
+    </script>
 </body>
+
 </html>
