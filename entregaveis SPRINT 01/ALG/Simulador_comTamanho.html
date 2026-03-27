@@ -37,7 +37,40 @@
                 <div class="content-title-info">
                     <i class="fa-solid fa-circle-info"></i>
                     <div class="info-simulador">
-                        
+                        <div class="info-main">
+                            <div class="info-title">
+                                <h1>Informações:</h1>
+                            </div>
+                            <div class="info-conteudo">
+                                <div class="info-conteudo-left">
+                                    <div class="info-row">
+                                        <h6>Tamanho do Supermercado:</h6>
+                                        <p>Define o tamanho do mercado, mostrando exemplos de médias reais.</p>
+                                    </div>
+                                    <div class="info-row">
+                                        <h6>Clientes por Dia:</h6>
+                                        <p>A quantidade de clientes que frequentam sua loja diariamente.</p>
+                                    </div>
+                                </div>
+                                <div class="info-conteudo-divisao">
+
+                                </div>
+                                <div class="info-conteudo-right">
+                                    <div class="info-row">
+                                        <h6>Gasto médio por cliente (R$):</h6>
+                                        <p>Média gasto por cliente.</p>
+                                    </div>
+                                    <div class="info-row">
+                                        <h6>Dias por mês:</h6>
+                                        <p>Quantos dias você abre sua loja no mês.</p>
+                                    </div>
+                                    <div class="info-row">
+                                        <h6>Conversão (%):</h6>
+                                        <p>N/A.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="content-title">
@@ -89,7 +122,41 @@
             <!-- SEM SISTEMA -->
             <div class="content-resultado">
                 <div class="content-left">
+                    <div class="content-info-left">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+                    <div class="info-res-left">
+                        <div class="info-main">
+                            <div class="info-title-l">
+                                <h1>Informações:</h1>
+                            </div>
+                            <div class="info-conteudo">
+                                <div class="info-conteudo-left">
+                                    <div class="info-row">
+                                        <h6>Receita:</h6>
+                                        <p>N/A.</p>
+                                    </div>
+                                    <div class="info-row">
+                                        <h6>Investimento Total:</h6>
+                                        <p>N/A.</p>
+                                    </div>
+                                </div>
+                                <div class="info-conteudo-divisao">
 
+                                </div>
+                                <div class="info-conteudo-right">
+                                    <div class="info-row">
+                                        <h6>Perdas mensais:</h6>
+                                        <p>N/A.</p>
+                                    </div>
+                                    <div class="info-row">
+                                        <h6>Perdas anuais:</h6>
+                                        <p>N/A.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="content-title-r">
                         <h1>Sem sistema</h1>
                     </div>
@@ -101,7 +168,41 @@
 
                 <!--COM SISTEMA -->
                 <div class="content-right">
+                    <div class="content-info-right">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+                    <div class="info-res-right">
+                        <div class="info-main">
+                            <div class="info-title-r">
+                                <h1>Informações:</h1>
+                            </div>
+                            <div class="info-conteudo">
+                                <div class="info-conteudo-left">
+                                    <div class="info-row">
+                                        <h6>Nova conversão::</h6>
+                                        <p>N/A.</p>
+                                    </div>
+                                    <div class="info-row">
+                                        <h6>Nova receita:</h6>
+                                        <p>N/A.</p>
+                                    </div>
+                                </div>
+                                <div class="info-conteudo-divisao">
 
+                                </div>
+                                <div class="info-conteudo-right">
+                                    <div class="info-row">
+                                        <h6>Retorno Mensal:</h6>
+                                        <p>N/A.</p>
+                                    </div>
+                                    <div class="info-row">
+                                        <h6>Payback:</h6>
+                                        <p>N/A.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="content-title-r">
                         <h1>Com sistema</h1>
                     </div>
@@ -114,7 +215,7 @@
         </div>
     </div>
 
-    
+
 
     <script>
         /*placeholders baseados em médias:*/
@@ -219,6 +320,7 @@
 
             let payback = ganho > 0 ? custoSistema / ganho : 0;
 
+
             // SEM SISTEMA
             resultadoSem.innerHTML = `
 
@@ -256,39 +358,77 @@
     `;
 
             // COM SISTEMA
-            resultadoCom.innerHTML = `
+            if (payback < 1) {
+                payback = payback * 30
 
-        <div class="res-content">
-            <div class="res-left">
-                <h2>Impacto</h2> <br>
-                <p>
-                    Nova conversão:<br>
-                    <b>${novaConversao.toFixed(2)}%</b><br><br>
+                resultadoCom.innerHTML = `
 
-                    Nova receita:<br>
-                    <b>R$${receitaNova.toFixed(2)}</b>
-                </p>
-            </div>
+                    <div class="res-content">
+                        <div class="res-left">
+                            <h2>Impacto</h2> <br>
+                            <p>
+                                Nova conversão:<br>
+                                <b>${novaConversao.toFixed(2)}%</b><br><br>
 
-            <div class="res-right">
-                <h2>Retorno</h2> <br>
-                <p>
-                    Mensal:<br>
-                    <span style="color:green;">
-                        <b>R$${ganho.toFixed(2)}</b>
-                    </span><br><br>
+                                Nova receita:<br>
+                                <b>R$${receitaNova.toFixed(2)}</b>
+                            </p>
+                        </div>
 
-                    Anual:<br>
-                    <span style="color:green;">
-                        <b>R$${ganhoAno.toFixed(2)}</b>
-                    </span><br><br>
+                        <div class="res-right">
+                            <h2>Retorno</h2> <br>
+                            <p>
+                                Mensal:<br>
+                                <span style="color:green;">
+                                    <b>R$${ganho.toFixed(2)}</b>
+                                </span><br><br>
 
-                    Payback:<br>
-                    <b>${payback.toFixed(2)} meses</b>
-                </p>
-            </div>
-        </div>
-    `;
+                                Anual:<br>
+                                <span style="color:green;">
+                                    <b>R$${ganhoAno.toFixed(2)}</b>
+                                </span><br><br>
+
+                                Payback:<br>
+                                <b>Em ${Math.ceil(payback)} dias.
+                            </p>
+                        </div>
+                    </div>
+                 `;
+            } else {
+                resultadoCom.innerHTML = `
+
+                    <div class="res-content">
+                        <div class="res-left">
+                            <h2>Impacto</h2> <br>
+                            <p>
+                                Nova conversão:<br>
+                                <b>${novaConversao.toFixed(2)}%</b><br><br>
+
+                                Nova receita:<br>
+                                <b>R$${receitaNova.toFixed(2)}</b>
+                            </p>
+                        </div>
+
+                        <div class="res-right">
+                            <h2>Retorno</h2> <br>
+                            <p>
+                                Mensal:<br>
+                                <span style="color:green;">
+                                    <b>R$${ganho.toFixed(2)}</b>
+                                </span><br><br>
+
+                                Anual:<br>
+                                <span style="color:green;">
+                                    <b>R$${ganhoAno.toFixed(2)}</b>
+                                </span><br><br>
+
+                                Payback:<br>
+                                <b>Em ${payback.toFixed(1)} meses.
+                            </p>
+                        </div>
+                    </div>
+                 `;
+            }
 
             /*if de confirmação de preenchimento dos campos:*/
 
