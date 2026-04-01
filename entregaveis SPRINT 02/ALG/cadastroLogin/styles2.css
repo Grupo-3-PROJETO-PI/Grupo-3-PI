@@ -29,7 +29,7 @@
     flex-direction: column;
     height: 100%;
     width: 100%;
-    background-color: color(srgb 0.851 0.537 0.153 / 0.48);
+    background-color: color(srgb 0.851 0.537 0.153 / 0.4);
 }
 
 .navbar {
@@ -130,7 +130,7 @@
     flex-direction: column;
     width: 70%;
     height: 30%;
-    gap: 0.4vh;
+    gap: 0.55vh;
 }
 
 .inputs-row label {
@@ -203,7 +203,7 @@
     justify-content: center;
     flex-direction: column;
     width: 90%;
-    height: 23%;
+    height: 25%;
 }
 
 .button-row{
@@ -219,8 +219,8 @@
     background-color: var(--cor01);
     color: white;
     font-size: 0.9rem;
-    width: 60%;
-    height: 5vh;
+    width: 70%;
+    height: 6vh;
     border: 3px solid rgb(255, 255, 255);
     border-radius: 1.3rem;
     cursor: pointer;
