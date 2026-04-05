@@ -1,4 +1,7 @@
+/*Stylos padrões*/
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
   --cor01: #8C3503;
@@ -14,6 +17,8 @@
   font-family: "Inter", sans-serif;
 }
 
+/*Header*/
+
 .navbar {
   display: flex;
   align-items: center;
@@ -21,7 +26,7 @@
   width: 100%;
   height: 8vh;
   position: fixed;
-  background-color: var(--cor03);
+  background-color: var(--cor01);
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -68,11 +73,11 @@
 }
 
 .nav-links ul li:hover{
-  color: var(--cor01);
+  color: var(--cor03);
 }
 
 .select{
-  color: var(--cor01) !important;
+  color: var(--cor03) !important;
   font-weight: 600;
 }
 
@@ -93,7 +98,7 @@
 }
 
 .nav-login i:hover{
-  color: var(--cor01);
+  color: var(--cor03);
 }
 
 .nav-login button {
@@ -111,40 +116,43 @@
 
 .nav-login button:hover{
   background-color: var(--cor05);
-  color: var(--cor03);
+  color: var(--cor01);
   border: none;
 }
 
-body {
-  background-image: url(../assets/img-fundo.png);
+/*Main*/
+
+.container-home{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  background-image: url('../assets/midia/home-image.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 100vh;
 }
 
-.titulo_home {
+.title-home {
   border-radius: 0 100px 100px 0;
   width: 50%;
   padding: 60px;
   background-color: #26471b;
-  position: relative;
-  top: 250px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
 }
 
-.titulo_home h2 {
+.title-home h2 {
   font-size: xx-large;
   color: white;
 }
 
-.titulo_home p {
+.title-home p {
   margin-top: 10px;
   font-size: x-large;
   color: white;
 }
 
-.titulo_home button{
+.title-home button{
   background-color: transparent;
   color: white;
   margin-top: 20px;
@@ -156,8 +164,201 @@ body {
   transition: 0.4s;
 }
 
-.titulo_home button:hover {
+.title-home button:hover {
   color: #26471b;
   background-color: white;
   box-shadow: 0 0 15px white;
+}
+
+/*Section valores*/
+
+.container-valores{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 80vh;
+  background-color: var(--cor02);
+}
+
+.title-valores{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 20%;
+}
+
+.title-valores span{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12%;
+  background-color: var(--cor04);
+  padding: 1rem;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+
+  color: var(--cor05);
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.content-valores{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 80%;
+  gap: 3.5vw;
+}
+
+.box-valores{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 80%;
+  width: 25%;
+  background-color: #ffffff13;
+  border: 1px solid var(--cor05);
+  border-radius: 30px;
+}
+
+.box-icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 90%;
+  height: 35%;
+  gap: 1vh;
+}
+
+.box-icon img{
+    height: 80%;
+}
+
+.box-icon h6{
+  font-size: 2rem;
+  color: var(--cor05);
+  font-weight: 400;
+}
+
+.box-text{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 90%;
+  height: 55%;
+}
+
+.box-text p{
+  text-align: center;
+  color: var(--cor05);
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+/*section nosso projeto*/
+
+.container-projeto{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 90vh;
+  background-color: var(--cor05);
+}
+
+.title-projeto{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 20%;
+}
+
+.title-projeto span{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12%;
+  background-color: var(--cor04);
+  padding: 1rem;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+
+  color: var(--cor05);
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.content-projeto{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  width: 100%;
+  height: 80%;
+  gap: 3.5vw;
+}
+
+.title-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 10%;
+  gap: 0.5vw;
+}
+
+.title-content h1{
+  font-family: "Raleway", sans-serif;
+  color: var(--cor02);
+  font-size: 3.5rem;
+}
+
+.title-content span{
+  color: var(--cor01);
+}
+
+.title-content img{
+  height: 50%;
+}
+
+.box-projeto{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 90%;
+  height: 85%;
+}
+
+.box-projeto-left, .box-projeto-right{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 45%;
+  height: 90%;
+  gap: 3vh;
+}
+
+.box-projeto-left h1{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.box-projeto-left p{
+  text-align: justify;
+  font-size: 1.3rem;
+}
+
+.box-projeto-right img{
+  height: 70%;
 }

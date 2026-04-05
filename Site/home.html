@@ -1,25 +1,23 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
       integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="icon" href="./assets/logo.png" />
-    <link rel="stylesheet" href="styles/home.css" />
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="./assets/midia/logo.png" />
+    <link rel="stylesheet" href="./styles/home.css" />
     <title>©2026 FlowTrak - Home</title>
-  </head>
-  <body>
-    <main>
+</head>
+
+<body>
+    <header>
       <div class="navbar">
         <div class="nav-logo">
           <h1>Flow <span>Track</span></h1>
-          <img src="./midia/logo.png" alt="" />
+          <img src="./assets/midia/logo.png" alt="" />
         </div>
         <div class="nav-links">
           <ul>
@@ -33,11 +31,85 @@
           <button>Entrar</button>
         </div>
       </div>
-      <section class="titulo_home">
-        <h2>Transforme filas em oportunidades</h2>
-        <p>Otimize o fluxo. <span>Aumente suas vendas.</span> Ofereça a experiência que seus clientes esperam.</p>
-        <button onclick="window.location.href='../Simulador_financeiro/Simulador_comTamanho.html'">Simule</button>
-      </section>
+    </header>
+
+    <main>
+      <div class="container-home">
+          <div class="title-home">
+            <h2>Transforme filas em oportunidades</h2>
+            <p>Otimize o fluxo. <span>Aumente suas vendas.</span> Ofereça a experiência que seus clientes esperam.</p>
+            <button onclick="window.location.href='../Simulador_financeiro/Simulador_comTamanho.html'">Simule</button>
+          </div>
+      </div>
     </main>
-  </body>
+
+    <section class="container-valores">
+        <div class="title-valores">
+            <span>Valores</span>
+        </div>
+        <div class="content-valores">
+            <div class="box-valores">
+                <div class="box-icon">
+                    <img src="./assets/midia/icon-missão.png" alt="">
+                    <h6>Missão</h6>
+                </div>
+                <div class="box-text">
+                    <p>
+                      Garantir eficiência operacional e melhor experiência de compra por meio do monitoramento inteligente do fluxo de clientes em supermercados. Utilizamos tecnologia e análise de dados para apoiar decisões estratégicas, reduzir filas, otimizar recursos e aumentar a satisfação dos consumidores.
+                    </p>
+                </div>
+            </div>
+            <div class="box-valores">
+                <div class="box-icon">
+                    <img src="./assets/midia/icon-objetivo.png" alt="">
+                    <h6>Objetivo</h6>
+                </div>
+                <div class="box-text">
+                    <p>
+                      Desenvolver uma solução tecnológica capaz de coletar, analisar e interpretar dados de movimentação dentro do supermercado, permitindo identificar padrões de comportamento, horários de pico e oportunidades de melhoria na disposição de produtos, atendimento e logística interna.
+                    </p>
+                </div>
+            </div>
+            <div class="box-valores">
+                <div class="box-icon">
+                    <img src="./assets/midia/icon-justificativa.png" alt="">
+                    <h6>Justificativa</h6>
+                </div>
+                <div class="box-text">
+                    <p>
+                      O alto fluxo de clientes em supermercados pode gerar filas, desorganização e perda de vendas. A falta de dados precisos dificulta a tomada de decisões eficientes. Este sistema surge como uma solução para transformar dados em insights estratégicos, aumentando a produtividade, reduzindo custos operacionais e melhorando a experiência do cliente.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-projeto">
+        <div class="title-projeto">
+            <span>Nosso Projeto</span>
+        </div>
+        <div class="content-projeto">
+            <div class="title-content">
+                <h1>Flow <span>Track</span></h1>
+                <img src="./assets/midia/logo-2.png" alt="" />
+            </div>
+            <div class="box-projeto">
+                <div class="box-projeto-left">
+                    <h1>
+                        Como funciona?
+                    </h1>
+                    <p>
+                      O sistema proposto utiliza o sensor de Bloqueio como principal mecanismo de captura de dados de fluxo. Esse sensor opera de forma que ao ser interrompido pela passagem de uma pessoa, gera um sinal digital imediato, permitindo a detecção precisa de eventos de entrada e saída.
+                      Essa integração garante não apenas a contagem de pessoas, mas também a análise contínua do comportamento de fluxo dentro do ambiente. Os sensores são estrategicamente posicionados em locais-chave, como entradas, saídas, caixas e corredores, permitindo uma visão abrangente da movimentação dos clientes. Com isso, o sistema consegue identificar padrões de circulação, horários de pico e formação de filas, fornecendo informações essenciais para a gestão operacional e tomada de decisão.
+                      Além de sua eficiência, o sensor de bloqueio destaca-se pelo baixo custo, fácil implementação e alta confiabilidade, tornando-se uma solução viável para ambientes comerciais de grande circulação. Seu uso é fundamental para garantir a precisão dos dados coletados, que servirão de base para análises inteligentes, otimização de processos e aumento do desempenho do estabelecimento.
+                    </p>
+                </div>
+                <div class="box-projeto-right">
+                    <img src="./assets/midia/sensor-arduino.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
 </html>
