@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+:root {
+  --cor01: #8C3503;
+  --cor02: #d98927;
+  --cor03: #bf6a02;
+  --cor04: #26471b;
+  --cor05: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 8vh;
+  position: fixed;
+  background-color: var(--cor03);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  height: 80%;
+  gap: 0.5vw;
+  cursor: pointer;
+}
+
+.nav-logo h1 {
+  font-size: 1.4rem;
+  color: white;
+}
+
+.nav-logo span {
+  color: var(--cor02);
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 80%;
+}
+
+.nav-links ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: 2vw;
+}
+
+.nav-links ul li {
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: 600;
+}
+
+.nav-links ul li:hover{
+  color: var(--cor01);
+}
+
+.select{
+  color: var(--cor01) !important;
+  font-weight: 600;
+}
+
+.nav-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  height: 80%;
+  gap: 1.5vw;
+}
+
+.nav-login i {
+  color: var(--cor05);
+  font-size: 2.6rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.nav-login i:hover{
+  color: var(--cor01);
+}
+
+.nav-login button {
+  background-color: transparent;
+  color: white;
+  font-size: 0.9rem;
+  width: 7vw;
+  height: 3.5vh;
+  border: 3px solid white;
+  border-radius: 0.9rem;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: 600;
+}
+
+.nav-login button:hover{
+  background-color: var(--cor05);
+  color: var(--cor03);
+  border: none;
+}
+
+body {
+  background-image: url(../assets/img-fundo.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.titulo_home {
+  border-radius: 0 100px 100px 0;
+  width: 50%;
+  padding: 60px;
+  background-color: #26471b;
+  position: relative;
+  top: 250px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
+}
+
+.titulo_home h2 {
+  font-size: xx-large;
+  color: white;
+}
+
+.titulo_home p {
+  margin-top: 10px;
+  font-size: x-large;
+  color: white;
+}
+
+.titulo_home button{
+  background-color: transparent;
+  color: white;
+  margin-top: 20px;
+  font-size: 30px;
+  border: 2px solid white;
+  border-radius: 100px;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.titulo_home button:hover {
+  color: #26471b;
+  background-color: white;
+  box-shadow: 0 0 15px white;
+}
