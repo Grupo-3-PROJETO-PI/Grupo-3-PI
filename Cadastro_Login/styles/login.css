@@ -44,26 +44,25 @@
     list-style: none;
 }
 
-.navbar ul li button {
+.navbar ul li a{
     background-color: transparent;
     color: white;
     font-size: 0.9rem;
-    width: 7vw;
-    height: 3.5vh;
+    padding: 0.35rem 1.4rem;
     border: 3px solid white;
     border-radius: 0.9rem;
     cursor: pointer;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
-.navbar ul li button a{
+.navbar ul li a{
     color: white;
     text-decoration: none;
 }
 
-.navbar ul li button:hover {
+.navbar ul li a:hover {
     background-color: var(--cor01);
-    border: none;
+    border: 3px solid transparent;
 }
 
 .content-login {
