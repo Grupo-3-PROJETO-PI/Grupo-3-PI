@@ -261,3 +261,5 @@ function calcular() {
         resultadoCom.innerHTML = ``;
     }
 }
+
+//animação entre as páginas

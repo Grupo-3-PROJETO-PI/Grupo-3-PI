@@ -17,6 +17,22 @@
   font-family: "Inter", sans-serif;
 }
 
+/*Animação do body*/
+
+body {
+    opacity: 0.5;
+    animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 /*Header*/
 
 .navbar {
@@ -429,7 +445,7 @@
   gap: 3.5vw;
 }
 
-.content-diagrama{
+.content-diagrama {
   width: 90%;
 }
 
@@ -758,7 +774,7 @@
 
 /*footer*/
 
-.container-footer{
+.container-footer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -769,7 +785,7 @@
   gap: 0.3vh;
 }
 
-.content-footer{
+.content-footer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -777,32 +793,35 @@
   height: 70%;
 }
 
-.content-footer-left{
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-direction: column;
-    height: 100%;
-    width: 48%;
-    gap: 1vh;
+.content-footer-left {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 48%;
+  gap: 1vh;
 }
 
-.footer-left-title{
+.footer-left-title {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
   width: 50%;
 }
 
-.footer-left-title h1{
+.footer-left-title h1 {
   font-weight: 400;
   font-family: "Raleway", sans-serif;
   color: white;
 }
 
-.footer-left-title p{
+.footer-left-title p {
   color: rgba(255, 255, 255, 0.7);
   font-weight: 300;
 }
 
-.footer-left-links{
+.footer-left-links {
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -812,31 +831,40 @@
   gap: 1.5vh;
 }
 
-.links-telefone, .links-email{
+.links-telefone a,
+.links-email a {
   display: flex;
   gap: 0.7vw;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-.links-telefone i, .links-email i{
+.links-telefone a:hover,
+.links-email a:hover {
+  transform: scale(1.05);
+}
+
+.links-telefone i,
+.links-email i {
   color: rgba(255, 255, 255, 0.9);
   font-size: 1.32rem;
 }
 
-.links-telefone p, .links-email p{
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.5);
+.links-telefone p,
+.links-email p {
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
 }
 
-.content-footer-right{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 48%;
+.content-footer-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 48%;
 }
 
-.footer-box{
+.footer-box {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -844,29 +872,30 @@
   height: 60%;
 }
 
-.footer-box ul{
+.footer-box ul {
   display: flex;
   flex-direction: column;
   list-style: none;
   gap: 1vh;
 }
 
-.footer-box ul li{
+.footer-box ul li a {
   font-weight: 600;
   color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   transition: 0.3s;
+  text-decoration: none;
 }
 
-.footer-box ul li:hover{
+.footer-box ul li a:hover {
   color: white;
 }
 
-.footer-select{
+.footer-select {
   color: white !important;
 }
 
-.divisao-footer{
+.divisao-footer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -875,8 +904,12 @@
   border-top: 1px solid #fff;
 }
 
-.divisao-footer h3{
+.divisao-footer h3 {
   font-size: 0.9rem;
   color: white;
   font-weight: 400;
+}
+
+.container-footer a {
+  text-decoration: none;
 }
