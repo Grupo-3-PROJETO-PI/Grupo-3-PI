@@ -17,22 +17,6 @@
   font-family: "Inter", sans-serif;
 }
 
-/*Animação do body*/
-
-body {
-    opacity: 0.5;
-    animation: fadeIn 0.3s ease-in-out forwards;
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0.5;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 /*Header*/
 
 .navbar {
@@ -194,7 +178,6 @@ body {
 .title-home button:hover {
   color: #26471b;
   background-color: white;
-  box-shadow: 0 0 10px white;
 }
 
 /*Section valores*/
