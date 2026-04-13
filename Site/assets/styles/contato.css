@@ -170,18 +170,21 @@ Formulario de contato
   flex-direction: column;
   width: 90%;
   height: 20%;
-}#titulo h1, #titulo p{
-  color: #8C3503;
+  gap: 0.3vh;
 }
 
+#titulo h1,
+#titulo p {
+  color: #8C3503;
+}
 
 #form {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 55%;
-    background-color: #d98927;
+  height: 65%;
+  background-color: #d98927;
 }
 
 #formContato {
@@ -220,19 +223,54 @@ Formulario de contato
 }
 
 #linhas_inputs input {
-  border: 1px solid var(--cor01);
+  border: 2px solid #8c3503c4;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   width: 100%;
   padding: 1rem;
+  padding-left: 2.8%;
+}
+
+#linhas_inputs i.fa-envelope{
+  position: absolute;
+  left: 5.8%;
+  top: 44.2%;
+  color: #8C3503;
+}
+
+#linhas_inputs i.fa-briefcase{
+  position: absolute;
+  left: 5.8%;
+  top: 35.79%;
+  color: #8C3503;
 }
 
 #assunto textarea {
-  width: 100%;
+  padding: 1rem;
+  width: 97.8%;
   height: 100%;
-  border:1px solid var(--cor01);
+  border: 2px solid #8c3503c4;
   border-radius: 10px;
   resize: none;
+}
+
+#assunto button{
+  position: absolute;
+  right: 6.3%;
+  top: 83%;
+  height: 5%;
+  width: 7%;
+  border: 1px solid white;
+  background-color: #8C3503;
+  color: white;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#assunto button:hover{
+  background-color: #26471b;
+
 }

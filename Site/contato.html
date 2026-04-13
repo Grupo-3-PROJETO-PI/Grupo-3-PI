@@ -47,14 +47,17 @@
             <form id="formContato">
                 <div id="inputs">
                     <div id="linhas_inputs">
-                        <input type="text" id="ipt_email" placeholder="✉️ Email">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="text" id="ipt_email" placeholder="Email">
                     </div>
                     <div id="linhas_inputs">
-                        <input type="text" id="ipt_empresa" placeholder="💼 Empresa">
+                        <i class="fa-solid fa-briefcase"></i>
+                        <input type="text" id="ipt_empresa" placeholder="Empresa">
                     </div>
                 </div>
                 <div id="assunto">
-                    <textarea name="" id=""></textarea>
+                    <textarea name="" id="txt_mensagem"></textarea>
+                    <button onclick="verificacao()">Enviar</button>
                 </div>
 
 
@@ -69,3 +72,25 @@
 </html>
 
 <script src="./assets/js/script.js"></script>
+
+<script>
+    function verificacao(){
+        let email = ipt_email.value;
+        let empresa = ipt_empresa.value;
+        let mensagem = txt_mensagem.value;
+
+        if(email == "" || empresa == ""){
+            alert("Preencha os campos corretamente!");
+        }else{
+            if(!email.includes("@") || !email.includes(".")){
+                alert("Seu email deve conter '@' e '.'! ");
+            }else if(empresa.length < 3){
+                alert("O nome da sua empresa deve conter 3 caracteres no mínimo.")
+            }else if(mensagem == ""){
+                alert("Digite sua mensagem!")
+            }else{
+                alert("Sua mensagem foi enviada!")
+            }
+        }
+    }
+</script>
