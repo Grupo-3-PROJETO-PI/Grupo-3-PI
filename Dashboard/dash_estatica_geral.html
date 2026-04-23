@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../Site/assets/midia/logo.png" />
+    <link rel="stylesheet" href="./assets/css/dash_estatica.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./assets/js/dash.js"></script>
+
+    <title>©2026 FlowTrak - Dash Geral</title>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="nav-logo">
+                <h1>Flow <span>Trak</span></h1>
+                <img src="./assets/midia/logo.png" alt="" />
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li>
+                        <a href="../Site/home.html">Home</a>
+                    </li>
+                    <li class="select">
+                        <a href="./dash_estatica_geral.html">Gráfico Geral</a>
+                    </li>
+                    <li>
+                        <a href="./dash_estatica_espec.html">Gráfico Específico</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-login">
+                <i class="fa-solid fa-circle-user"></i>
+                <button onclick="redirecionamento_login()">Entrar</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="divisao-nav">
+        
+    </div>
+
+    <main>
+        <div class="container-geral">
+            <div class="container-geral-titulo">
+                <h1>Fluxo de Clientes: Díario (17/03/2026)</h1>
+            </div>
+            <div class="content-geral">
+                <div class="content-geral-left">
+                    <div class="geral-kpis">
+                        <div class="box-kpis" id="alerta">
+                            <div class="box-kpis-row"></div>
+                            <div class="box-kpis-row"></div>
+                            <div class="box-kpis-row"></div>
+                        </div>
+                        <div class="box-kpis" id="potencial">
+                            <div class="box-kpis-row"></div>
+                            <div class="box-kpis-row"></div>
+                            <div class="box-kpis-row"></div>
+                        </div>
+                        <div class="box-kpis" id="normal">
+                            <div class="box-kpis-row"></div>
+                            <div class="box-kpis-row"></div>
+                            <div class="box-kpis-row"></div>
+                        </div>
+                    </div>
+                    <div class="geral-left-grafico">
+                        <canvas id="grafico_linha_fluxo" style="height: 75%; max-width: 90%;"></canvas>
+                    </div>
+                </div>
+                <div class="content-geral-right">
+                    <div class="geral-right-titulo">
+                        <h1>Mapa de calor: areas de maior movimento | Díario (17/03/2026)</h1>
+                    </div>
+                    <div class="geral-right-grafico">
+                        <img src="./assets/images/planta_loja.png" alt="">
+                        <canvas id="grafico_mapa_calor_fluxo" style="height: 75%; max-width: 85%;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
+
+<script>
+    // gráfico de linha
+
+    // definição do gráfico linkado a estrutura no HTML
+    const fluxo_linha = document.getElementById('grafico_linha_fluxo');
+
+    // criação do gráfico e suas específicações
+    new Chart(fluxo_linha, {
+        type: 'line',
+        data: {
+            labels: ['8h', '10h', '12h', '14h', '16h', '18h', '20h'],
+            datasets: [{
+                label: 'Intensidade de Fluxo',
+                data: [1, 2, 2, 5, 2, 1, 1],
+                borderWidth: 1,
+                tension: 0.5,
+                pointRadius: 4,
+                fill: true,
+            }]
+
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Horário'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Nível de Intensidade',
+                    },
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1,
+                    }
+                }
+            }
+        }
+    });
+
+
+    // gráfico de Mapa de Calor
+
+    // definição do gráfico linkado ao HTML
+    const fluxo_mapa_calor = document.getElementById('grafico_mapa_calor_fluxo');
+
+    // função de intensidade da cor
+    function pegarCorPorIntensidade(r) {
+        if (r <= 0) return 'rgba(255, 0, 0, 0.2)';
+        if (r <= 5) return 'rgba(255, 0, 0, 0.4)';
+        if (r <= 10) return 'rgba(255, 0, 0, 0.6)';
+        if (r <= 15) return 'rgba(255, 0, 0, 0.8)';
+        if (r <= 20) return 'rgba(255, 0, 0, 1)';
+    }
+
+    // dados do gráfico
+    const dados = [
+        { x: 8, y: 8, r: 0 },
+        { x: 1, y: 0, r: 20 },
+        { x: 2, y: 0, r: 15 },
+        { x: 2, y: 1, r: 10 },
+        { x: 4, y: 2, r: 5 },
+        { x: 7, y: 6, r: 20 }
+    ];
+
+    // gera as cores com base na intensidade
+    const cores = dados.map(ponto => pegarCorPorIntensidade(ponto.r));
+
+    // criação do gráfico
+    new Chart(fluxo_mapa_calor, {
+        type: 'bubble',
+        data: {
+            datasets: [
+                {
+                    label: 'Fluxo baixo',
+                    data: dados.filter(p => p.r <= 5),
+                    backgroundColor: 'rgba(255, 0, 0, 0.2)'
+                },
+                {
+                    label: 'Fluxo médio',
+                    data: dados.filter(p => p.r > 5 && p.r <= 15),
+                    backgroundColor: 'rgba(255, 0, 0, 0.4)'
+                },
+                {
+                    label: 'Fluxo alto',
+                    data: dados.filter(p => p.r > 15),
+                    backgroundColor: 'rgba(255, 0, 0, 0.7)'
+                }
+            ]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        usePointStyle: true,
+                        pointStyle: 'circle',
+
+                        color: '#000',
+                        font: {
+                            size: 14,
+                            family: 'Arial',
+                            weight: 'bold'
+                        },
+
+                        boxWidth: 20,
+                        padding: 20
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    ticks: {
+                        display: false
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        display: false
+                    }
+                }
+            }
+        }
+    });
+</script>
