@@ -1,1 +1,1 @@
-!(teste)[site/assets/imgs/backReadme.png]
+!(teste)[site/assets/midia/backReadme.png]
